@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+
+<FlowPane fx:id="list" hgap="10" vgap="10" columnHalignment="CENTER" prefWidth="200.0" rowValignment="TOP" stylesheets="@./styles/buildingList.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhkiel.ki.ui.BuildingList" />

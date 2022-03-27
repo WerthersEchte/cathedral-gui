@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'org.openjfx.javafxplugin' version '0.0.12'
+}
+
+group 'de.fhkiel.ki'
+version '1.0-Beta'
+
+sourceCompatibility = 16
+
+repositories {
+    maven {
+        url file('libraries')
+        metadataSources {
+            artifact()
+        }
+    }
+    mavenCentral()
+}
+
+javafx {
+    version = "16"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+dependencies {
+    implementation 'ki:cathedral-game:1.0-beta'
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+

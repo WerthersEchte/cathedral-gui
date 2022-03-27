@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root" prefHeight="696.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhkiel.ki.ui.Base">
+   <children>
+      <MenuBar prefWidth="684.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#close" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ScrollPane fitToHeight="true" fitToWidth="true" HBox.hgrow="ALWAYS" VBox.Vgrow="ALWAYS">
+         <content>
+            <VBox spacing="20.0" HBox.hgrow="ALWAYS" VBox.Vgrow="ALWAYS">
+               <children>
+                  <HBox>
+                     <children>
+                         <fx:include fx:id="control" source="control.fxml" HBox.hgrow="ALWAYS" VBox.Vgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <VBox maxWidth="440.0" minWidth="440.0" prefWidth="440.0">
+                           <children>
+                              <BorderPane maxHeight="440.0" maxWidth="440.0" minHeight="440.0" minWidth="440.0" prefHeight="440.0" prefWidth="440.0">
+                                 <center>
+                                     <fx:include fx:id="field" source="field.fxml" />
+                                 </center>
+                              </BorderPane>
+                              <Pane minHeight="100.0" prefHeight="200.0" />
+                           </children>
+                        </VBox>
+                        <BorderPane minWidth="200.0" HBox.hgrow="ALWAYS" VBox.Vgrow="ALWAYS">
+                            <center>
+                                <fx:include fx:id="buildingList" source="buildingList.fxml" HBox.hgrow="ALWAYS" VBox.Vgrow="ALWAYS" />
+                            </center>
+                        </BorderPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

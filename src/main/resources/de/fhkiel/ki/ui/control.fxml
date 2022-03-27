@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fhkiel.ki.ui.Control">
+   <children>
+      <VBox maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+         <children>
+            <TextField fx:id="nameWhite" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" promptText="Playername" />
+            <Button fx:id="ttWhite" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#takeTurnWhite" text="Take Turn" VBox.vgrow="ALWAYS" />
+            <ChoiceBox fx:id="selectWhite" maxWidth="1.7976931348623157E308" />
+         </children>
+         <padding>
+            <Insets right="30.0" />
+         </padding></VBox>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@./styles/control.css">
+         <top>
+            <HBox BorderPane.alignment="CENTER">
+               <children>
+                  <VBox fx:id="white" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="White" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="scoreWhite" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" text="XX" HBox.hgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets right="50.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="black" prefWidth="150.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label maxWidth="1.7976931348623157E308" text="Black">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="scoreBlack" maxWidth="1.7976931348623157E308" text="XX">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="50.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#forfeitTurn" text="Forfeit Turn" />
+                  <ToggleButton maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#rulesOff" text="Rules off" />
+                  <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#undoTurn" text="Undo Turn" />
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+         <children>
+            <TextField fx:id="nameBlack" maxWidth="1.7976931348623157E308" promptText="Playername" />
+            <Button fx:id="ttBlack" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#takeTurnBlack" text="Take Turn" VBox.vgrow="ALWAYS" />
+            <ChoiceBox fx:id="selectBlack" maxWidth="1.7976931348623157E308" />
+         </children>
+         <padding>
+            <Insets left="30.0" />
+         </padding></VBox>
+   </children>
+</HBox>

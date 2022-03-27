@@ -1,0 +1,28 @@
+.lgray {
+    -fx-background-color: lightgrey;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+.dgray {
+    -fx-background-color: darkgrey;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+}
+.field {
+    -fx-background-color: pink;
+}
+.fBlue {
+    -fx-background-color: blue;
+}
+.fBlack {
+    -fx-background-color: black;
+}
+.fWhite {
+    -fx-background-color: antiquewhite;
+}
+.fBlackOwned {
+    -fx-background-color: dimgray;
+}
+.fWhiteOwned {
+    -fx-background-color: aliceblue;
+}

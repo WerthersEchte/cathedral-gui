@@ -1,0 +1,16 @@
+.whiteBuilding {
+    -fx-background-color: antiquewhite;
+}
+.blackBuilding {
+    -fx-background-color: black;
+}
+.blueBuilding {
+    -fx-background-color: blue;
+}
+.transparentGrid {
+    -fx-background-color: transparent;
+}
+.center {
+    -fx-border-color: red;
+    -fx-border-width: 3;
+}

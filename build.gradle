@@ -1,0 +1,150 @@
+plugins {
+    id 'java-library'
+    id 'jacoco'
+
+    id 'maven-publish'
+    id 'org.jreleaser' version '1.26.0'
+    id 'signing'
+}
+
+group 'io.github.werthersechte'
+version '2.0.0'
+
+sourceCompatibility = 21
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api 'io.github.werthersechte:cathedral-ai:2.0.1'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+
+    testImplementation 'org.mockito:mockito-core:5.2.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.2.0'
+
+    testImplementation 'io.cucumber:cucumber-java:7.11.2'
+    testImplementation 'io.cucumber:cucumber-junit:7.11.2'
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.9.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+    dependsOn test
+    reports {
+        csv.required = true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it,
+                    exclude: ['**/ai/**',
+                              '**/gui/**'])
+        }))
+    }
+}
+
+// maven central deploy
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign publishing.publications
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+
+            groupId = project.group.toString()
+            artifactId = project.name
+            version = project.version.toString()
+
+            from components.java
+
+            pom {
+                name = project.name
+                description = "An gui for cathedral in Java"
+                url = "https://github.com/WerthersEchte/cathedral-gui"
+                licenses {
+                    license {
+                        name = "The Unlicense"
+                        url = "https://unlicense.org"
+                    }
+                }
+                developers {
+                    developer {
+                        id = "WerthersEchte"
+                        name = "Eike Petersen"
+                        email = "epetersen@gmx.li"
+                    }
+                }
+                scm {
+                    url = "https://github.com/WerthersEchte/cathedral-gui"
+
+                    connection = "scm:git:git://github.com/WerthersEchte/cathedral-gui.git"
+
+                    developerConnection = "scm:git:git://github.com/WerthersEchte/cathedral-gui.git"
+
+                }
+                issueManagement {
+                    url = "https://github.com/WerthersEchte/cathedral-gui/issues"
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            url = layout.buildDirectory.dir('staging-deploy')
+        }
+    }
+}
+
+jreleaser {
+    signing {
+        pgp {
+            active = 'ALWAYS'
+            armored = true
+        }
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                sonatype {
+                    active = 'RELEASE'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    stagingRepository('build/staging-deploy')
+                }
+            }
+        }
+    }
+    release {
+        github {
+            skipRelease = true
+            github.token = "empty"
+        }
+    }
+}

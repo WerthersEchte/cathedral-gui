@@ -1,4 +1,4 @@
-# A cathedral implementation in Java
+# A gui for a cathedral implementation in Java
 [![License: Unlicense](https://img.shields.io/badge/License-Unlicense-blue.svg)](http://unlicense.org/)
 ![Build](https://github.com/WerthersEchte/cathedral-gui/actions/workflows/build.yml/badge.svg)
 [![Test coverage](.github/badges/jacoco.svg)](https://github.com/WerthersEchte/cathedral-gui/actions/workflows/build.yml)
